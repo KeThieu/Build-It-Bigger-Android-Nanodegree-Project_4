@@ -1,3 +1,5 @@
+#This is my submission repository for Udacity Android Developer Nanodegree Project 4. Instructions are copied from the original source.
+
 # Gradle for Android and Java Final Project
 
 In this project, you will create an app with multiple flavors that uses

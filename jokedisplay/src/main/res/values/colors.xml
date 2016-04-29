@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- AppTheme colors -->
+    <!-- Red 500 -->
+    <color name="colorPrimary">#F44336</color>
+    <!-- Red 700 -->
+    <color name="colorPrimaryDark">#D32F2F</color>
+    <!-- Green A200 -->
+    <color name="colorAccent">#69F0AE</color>
+
+    <!-- Text Colors -->
+    <!-- Black -->
+    <color name="textPrimary">#212121</color>
+    <!-- Grey -->
+    <color name="textSecondary">#727272</color>
+</resources>

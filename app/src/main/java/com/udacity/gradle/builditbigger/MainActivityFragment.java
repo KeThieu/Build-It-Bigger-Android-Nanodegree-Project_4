@@ -1,8 +1,11 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +18,15 @@ import com.google.android.gms.ads.AdView;
 import com.udacity.gradle.builditbigger.JokeSmith;
 import com.udacity.gradle.builditbigger.jokedisplay.JokeActivity;
 
-/**
- * A placeholder fragment containing a simple view.
- */
-public class MainActivityFragment extends Fragment {
+public class MainActivityFragment extends Fragment implements EndpointsAsyncTask.mCallback{
 
-    private static Toast mToast;
+    //private static String retrievedJoke;
     public MainActivityFragment() {
+    }
+
+    public void getJokeFromTask() {
+        Context context = getActivity();
+        new EndpointsAsyncTask(this).execute(context);
     }
 
     @Override
@@ -33,19 +38,8 @@ public class MainActivityFragment extends Fragment {
         jokeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                JokeSmith smith = new JokeSmith();
-                Intent sendIntent = new Intent(getActivity(), JokeActivity.class);
-                sendIntent.putExtra(JokeActivity.TAG, smith.getJoke());
-                startActivity(sendIntent);
-                /*
-                if(mToast != null) {
-                    mToast.cancel();
-                    mToast = null;
-                }
-
-                mToast = Toast.makeText(getActivity(), smith.getJoke(), Toast.LENGTH_SHORT);
-                mToast.show();
-                */
+                //start AsyncTask to get the Joke
+                getJokeFromTask();
             }
         });
 
@@ -58,5 +52,12 @@ public class MainActivityFragment extends Fragment {
                 .build();
         mAdView.loadAd(adRequest);
         return root;
+    }
+
+    public void onCallbackResult(String result) {
+        //retrievedJoke = result;
+        Intent sendIntent = new Intent(getActivity(), JokeActivity.class);
+        sendIntent.putExtra(JokeActivity.TAG, result);
+        startActivity(sendIntent);
     }
 }

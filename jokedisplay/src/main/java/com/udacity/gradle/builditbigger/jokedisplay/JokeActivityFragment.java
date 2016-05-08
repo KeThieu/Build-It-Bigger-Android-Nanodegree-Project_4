@@ -33,10 +33,6 @@ public class JokeActivityFragment extends Fragment {
             }
         }
 
-        AdView adView = (AdView) root.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
-
         return root;
     }
 }

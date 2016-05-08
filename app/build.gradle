@@ -18,6 +18,16 @@ android {
         }
     }
 
+    productFlavors {
+        free {
+            applicationId "com.udacity.gradle.builditbigger.free"
+        }
+
+        paid {
+            applicationId "com.udacity.gradle.builditbigger.paid"
+        }
+    }
+
     compileOptions {
         sourceCompatibility = "1.7"
         targetCompatibility = "1.7"
@@ -41,3 +51,4 @@ dependencies {
     //Google Cloud Endpoints Backend
     compile project(path: ':backend', configuration: 'android-endpoints')
 }
+
